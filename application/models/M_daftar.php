@@ -5,8 +5,8 @@ class M_daftar extends CI_Model{
         $this->load->database();
     }
 
-    public function daftarPerusahaan($tabel,$data){
-        $this->db->insert($data);
+    public function daftarPerusahaan($data){
+        $this->db->insert('pelanggan',$data);
     }
 
     public function login($table,$data){

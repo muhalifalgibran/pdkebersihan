@@ -44,12 +44,13 @@ class Autentikasi extends CI_Controller{
         $nama_perusahaan = $this->input->post('nama_perusahaan');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
+        $hash = $this->bcrypt->hash_password($password);
         $nama_pendaftar = $this->input->post('nama_pendaftar');
         $alamat = $this->input->post('alamat');
 
         $data = array('namaPerusahaan' => $nama_perusahaan,
                       'username' => $username,
-                      'password' => $password,
+                      'password' => $hash,
                       'status' => 'calon pelanggan',
                       'namaPendaftar' => $nama_pendaftar,
                       'alamatPerusahaan' => $alamat);
