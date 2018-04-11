@@ -11,24 +11,28 @@ class Autentikasi extends CI_Controller{
 
     public function login()
     {
-
         $submit = $this->input->post('submit');
         if (isset($submit)){
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
-            $auth = array('username' => $username,
-                          'password' => $password);
+            $log = $this->M_daftar->login(strtolower($username),$password);
 
-            $in = $this->M_daftar->login('pelanggan',$auth)->result();
+            if ($log != FALSE){
 
-            if ($in){
-                redirect('Pelanggan/dashboard');
+                $array = array(
+                    'logged_in' => TRUE,
+                    'id' => $log->id_pelanggan,
+                    'username' => $log->username
+                );
+                $this->session->set_userdata( $array );
+              redirect('Pelanggan/dashboard');
             }else{
                 $this->session->set_flashdata('status','<div class="alert alert-danger" role="alert">
                                               Username dan Password Salah!
                                             </div>');
-                redirect('Autentikasi/login');
+            redirect('Autentikasi/login');
+                echo $log;
 
             }
 
