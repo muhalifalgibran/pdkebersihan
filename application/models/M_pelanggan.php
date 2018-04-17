@@ -1,5 +1,5 @@
 <?php
-class M_daftar extends CI_Model{
+class M_pelanggan extends CI_Model{
 
     function __construct(){
         $this->load->database();
@@ -15,7 +15,6 @@ class M_daftar extends CI_Model{
         $query = $this->db->get('pelanggan');
         if ($query->num_rows() > 0){
             $user = $query->result()[0];
-
 //            var_dump($this->bcrypt->check_password($pass,$user->password));
             if ($this->bcrypt->check_password($pass,$user->password)){
                 return $user;
@@ -23,6 +22,12 @@ class M_daftar extends CI_Model{
 
         }
             return false;
+    }
+
+    public function  updateDate($id,$data){
+        $this->db->set($data);
+        $this->db->where('idPelanggan',$id);
+        $this->db->update('pelanggan');
     }
 
 

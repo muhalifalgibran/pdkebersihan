@@ -61,13 +61,7 @@
                     <div class="form-group">
                         <input  class="form-cust" type="password" id="user" name="password" placeholder="Password" required>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-cust" id="user" name="nama_pendaftar" placeholder="Nama Pendaftar" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="alamat" class="form-cust-textarea" placeholder="Alamat Perusahaan" id="exampletextarea1" ></textarea>
 
-                    </div>
                     <div class="form-group">
                         <a href="#" class="pull-right forgot"><?php echo $this->session->flashdata("status");?></a>
                     </div>

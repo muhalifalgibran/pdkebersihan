@@ -15,7 +15,7 @@
             <img src="<?php echo base_url()?>assets/res/logo2.png" class="logo-head" alt="">
         <ul class="nav2">
             <li>
-                <a class="nav-link" href="#">Profil</a>
+                <a class="nav-link" href="profil">Edit Profil</a>
             </li>
             <li>
                 <a class="nav-link" href="#">Pelayanan Khusus</a>

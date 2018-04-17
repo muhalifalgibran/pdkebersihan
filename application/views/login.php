@@ -71,6 +71,8 @@
     </div>
 </div>
 
+
+
 <script src="<?php echo base_url()?>assets/node_modules/js/jquery.js"></script>
 <script src="<?php echo base_url()?>assets/node_modules/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url()?>assets/node_modules/4/bootstrap.min.js"></script>

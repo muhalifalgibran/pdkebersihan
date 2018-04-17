@@ -6,7 +6,7 @@ class Autentikasi extends CI_Controller{
 
     function __construct(){
         parent::__construct();
-        $this->load->model('M_daftar');
+        $this->load->model('M_pelanggan');
     }
 
     public function login()
@@ -16,17 +16,17 @@ class Autentikasi extends CI_Controller{
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
-            $log = $this->M_daftar->login(strtolower($username),$password);
+            $log = $this->M_pelanggan->login(strtolower($username),$password);
 
             if ($log != FALSE){
 
                 $array = array(
                     'logged_in' => TRUE,
-                    'id' => $log->id_pelanggan,
-                    'username' => $log->username
-                );
+                    'id' => $log->idPelanggan,
+                    'username' => $log->username);
+
                 $this->session->set_userdata( $array );
-              redirect('Pelanggan/dashboard');
+                redirect('pelanggan/Pelanggan/dashboard');
             }else{
                 $this->session->set_flashdata('status','<div class="alert alert-danger" role="alert">
                                               Username dan Password Salah!
@@ -55,9 +55,7 @@ class Autentikasi extends CI_Controller{
         $data = array('namaPerusahaan' => $nama_perusahaan,
                       'username' => $username,
                       'password' => $hash,
-                      'status' => 'calon pelanggan',
-                      'namaPendaftar' => $nama_pendaftar,
-                      'alamatPerusahaan' => $alamat);
+                      'status' => 'calon pelanggan');
         $this->M_daftar->daftarPerusahaan($data);
 
         redirect('Autentikasi/login');
