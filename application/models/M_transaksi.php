@@ -1,7 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Muh. Alif Al-Gibran
- * Date: 4/18/2018
- * Time: 12:21 AM
- */
+class M_transaksi extends CI_Model
+{
+
+    function __construct()
+    {
+        $this->load->database();
+    }
+
+    public function setTransaksi($data){
+        $this->db->insert('transaksi',$data);
+    }
+}

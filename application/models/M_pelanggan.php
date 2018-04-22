@@ -24,11 +24,34 @@ class M_pelanggan extends CI_Model{
             return false;
     }
 
-    public function  updateDate($id,$data){
+    public function getStatus($where){
+        $query = $this->db->get_where('pelanggan',$where);
+        $hasil =  $query->result()[0];
+        return $hasil;
+    }
+
+    public function getPenawaran($where){
+        return $this->db->get_where('proposal_penawaran',$where);
+    }
+
+
+    public function updateDate($id,$data){
         $this->db->set($data);
         $this->db->where('idPelanggan',$id);
         $this->db->update('pelanggan');
     }
+
+    public function hapus($where){
+        $this->db->delete('proposal_penawaran',array('idProposal' => $where));
+    }
+
+    public function editStatus($where,$edit){
+        $this->db->where($where);
+        $this->db->update('proposal_penawaran',$edit);
+
+    }
+
+
 
 
 }
