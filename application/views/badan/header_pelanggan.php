@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container-login100">
-    <nav class="nav1">
+    <nav class="nav3">
         <img src="<?php echo base_url()?>assets/res/logo2.png" class="logo-head" alt="">
         <ul class="nav2">
             <li>

@@ -36,8 +36,15 @@
 
                             <?php $no++;
                             } ?>
-                        </table>
 
+                        </table>
+                       <div class="row">
+                        <div class="col">
+                            <!--Tampilkan pagination-->
+                            <?php echo $pagination;
+                          ?>
+                        </div>
+                    </div>
 
                     </div>
                 </div>

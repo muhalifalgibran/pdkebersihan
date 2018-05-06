@@ -4,7 +4,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Daftar Pegawai</h1>
+            <h1 class="page-header">Daftar Calon/pelanggan</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -21,27 +21,28 @@
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Nama User</th>
-                            <th>Username</th>
-                            <th>Jabatan</th>
-                            <th>Edit</th>
+                            <th>Nama Perusahaan</th>
+                            <th>Keterangan</th>
+                            <th>Jenis Layanan</th>
+                            <th>Tgl Operasi</th>
+                            <th>Dana</th>
+                            <th>Alamat</th>
+
 
                         </tr>
                         </thead>
                         <tbody>
-                        <?php  foreach ($pegawai as $peg){ ?>
+                        <?php  foreach ($minggu as $pel){ ?>
                             <tr class="odd gradeX">
 
-                                <td><?php echo $peg->idPegawai ?></td>
-                                <td><?php echo $peg->namaUser ?></td>
-                                <td><?php echo $peg->username ?></td>
-                                <td class="center"><?php echo $peg->rules ?></td>
-                                <td class="center">
-                                    <a href="<?php echo base_url()?>Super_admin/hapusUser/<?php echo $peg->idPegawai?>"><button type="button" class="btn btn-danger" >Hapus</button></a>
+                                <td><?php echo $pel->idTranskasi ?></td>
+                                <td><?php echo $pel->namaPerusahaan ?></td>
+                                <td><?php echo $pel->keteranganTransaksi ?></td>
+                                <td class="center"><?php echo $pel->jenisLayanan ?></td>
+                                <td class="center"><?php echo $pel->tglOperasi ?></td>
+                                <td class="center"><?php echo $pel->dana ?></td>
+                                <td class="center"><?php echo $pel->alamatPerusahaan ?></td>
 
-                                    <!--                                    <a><button type="button"  onclick="window.print()" class="btn btn-danger">print</button></a>-->
-
-                                </td>
 
                             </tr>
                         <?php  }?>

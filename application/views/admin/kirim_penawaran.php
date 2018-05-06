@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <?php echo form_open_multipart('penguji-penawaran')?>
+                <?php echo form_open_multipart('marketing-input_penawaran')?>
                 <div class="panel-body">
 
 
@@ -19,7 +19,9 @@
                         <label for="exampleFormControlSelect1">Nama Perusahaan</label>
                         <select class="form-control"  name="pelanggan">
                             <?php  foreach($namaPerusahaan as $key) { ?>
-                            <option value="<?php echo $key->idPelanggan?>"><?php echo $key->namaPerusahaan?></option>
+                            <option value="<?php echo $key->idPelanggan?>"><?php echo $key->namaPerusahaan.' - Tgl Operasi : ';
+                            $tgl = $key->a;
+                            echo nice_date($tgl,'D,d-M-Y');?></option>
                             <?php  } ?>
                         </select>
                     </div>
@@ -32,7 +34,7 @@
                     <div class="form-group">
                         <label>Proposal Penawaran</label>
                         <input type="file" name="proposal" class="form-control-file form-control" id="exampleFormControlFile1">
-                    </div>
+                      </div>
 
                     <div class="form-group">
                         <button type="submit" name="sub" class="btn btn-info form-control">Kirim</button>

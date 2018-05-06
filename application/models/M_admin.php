@@ -14,6 +14,16 @@ class M_admin extends CI_Model
         return $query;
     }
 
+    public function hitungJumlahTR(){
+        $this->db->select('count(*) as tr');
+        return $this->db->get('transaksi')->row_array();
+    }
+
+    public function hitungProposal(){
+        $this->db->select('count(*) as pr');
+        return $this->db->get('proposal_penawaran')->row_array();
+    }
+
     public function hitungPelanggan(){
         $this->db->select('count(*) AS totalPelanggan');
         $this->db->where('status','pelanggan');
@@ -47,9 +57,13 @@ class M_admin extends CI_Model
     }
 
     public function getNamaPerusahaan(){
-        $this->db->select('*');
-        $this->db->where('status','pelanggan');
-        $query = $this->db->get('pelanggan');
+        $where = "status = 'pelanggan' AND statusPenawaran = 'Tidak Setuju'";
+        $this->db->select("namaPerusahaan, tglOperasi as a, pel.idPelanggan");
+        $this->db->from('pelanggan pel');
+        $this->db->where($where);
+        $this->db->join('proposal_penawaran as pp', 'pel.idPelanggan = pp.idPelanggan');
+        $this->db->join('transaksi as tr', 'pel.idPelanggan = tr.idPelanggan');
+        $query = $this->db->get();
         return $query;
     }
 
@@ -103,6 +117,7 @@ class M_admin extends CI_Model
         return $this->db->get('pegawai')->result();
     }
 
+
     public function hapusUser($id){
         $this->db->where('idPegawai', $id);
         $this->db->delete('pegawai');
@@ -130,5 +145,10 @@ class M_admin extends CI_Model
           $this->db->where('idPelanggan',$id);
           $this->db->update(pelanggan);
       }
+    }
+
+    public function getLaporanMingguan($where){
+        $select = 'SELECT * from transaksi join pelanggan using(idPelanggan) where'.$where;
+        return $this->db->query($select)->result();
     }
 }

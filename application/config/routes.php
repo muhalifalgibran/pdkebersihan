@@ -18,6 +18,9 @@ $route['super-regis'] = 'Super_admin/registrasi';
 $route['penguji-dashboard'] = 'penguji/Penguji/Dashboard';
 $route['penguji-penawaran'] = 'penguji/Penguji/penawaran';
 $route['penguji-daftar_penawaran'] = 'penguji/Penguji/daftarPenawaran';
+$route['kasie-dashboard'] = 'kasiePelsus/KasiePelsus/dashboard';
+$route['kasie-mingguan'] = 'kasiePelsus/KasiePelsus/laporanMingguan';
+$route['kasie-bulanan'] = 'kasiePelsus/KasiePelsus/laporanBulanan';
 
 
 

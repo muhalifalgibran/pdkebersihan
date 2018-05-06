@@ -4,7 +4,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Daftar Pegawai</h1>
+            <h1 class="page-header">Laporan Mingguan</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -13,40 +13,18 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nama User</th>
-                            <th>Username</th>
-                            <th>Jabatan</th>
-                            <th>Edit</th>
 
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php  foreach ($pegawai as $peg){ ?>
-                            <tr class="odd gradeX">
+                    <?php //echo form_open('kasie-dashboard') ?>
+                    <button type="submit" class="btn btn-secondary"><a href="<?php echo base_url() ?>kasiePelsus/KasiePelsus/bulanan/1">Triwulan 1</a></button>
+                    <button type="submit" class="btn btn-secondary"><a href="<?php echo base_url() ?>kasiePelsus/KasiePelsus/bulanan/2">Triwulan 2</a></button>
+                    <button type="submit" class="btn btn-secondary"><a href="<?php echo base_url() ?>kasiePelsus/KasiePelsus/bulanan/3">Triwulan 3</a></button>
+                    <button type="submit" class="btn btn-secondary"><a href="<?php echo base_url() ?>kasiePelsus/KasiePelsus/bulanan/4">Triwulan 4</a></button>
 
-                                <td><?php echo $peg->idPegawai ?></td>
-                                <td><?php echo $peg->namaUser ?></td>
-                                <td><?php echo $peg->username ?></td>
-                                <td class="center"><?php echo $peg->rules ?></td>
-                                <td class="center">
-                                    <a href="<?php echo base_url()?>Super_admin/hapusUser/<?php echo $peg->idPegawai?>"><button type="button" class="btn btn-danger" >Hapus</button></a>
+                    <!--                    </form>-->
 
-                                    <!--                                    <a><button type="button"  onclick="window.print()" class="btn btn-danger">print</button></a>-->
-
-                                </td>
-
-                            </tr>
-                        <?php  }?>
-                        </tbody>
-                    </table>
                     <!-- /.table-responsive -->
                     <!--                        <div class="well">-->
                     <!--                            <h4>DataTables Usage Information</h4>-->
@@ -97,3 +75,10 @@
 </body>
 
 </html>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Muh. Alif Al-Gibran
+ * Date: 5/6/2018
+ * Time: 12:51 PM
+ */

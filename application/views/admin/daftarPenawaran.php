@@ -13,7 +13,6 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -23,7 +22,7 @@
                             <th>Id</th>
                             <th>Nama Perusahaan</th>
                             <th>Status Penawaran</th>
-                            <th>Nama Pendaftar</th>
+                            <th>Tanggal Operasi</th>
                             <th>Dana</th>
 
                         </tr>

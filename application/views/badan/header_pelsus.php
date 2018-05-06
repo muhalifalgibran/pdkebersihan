@@ -75,21 +75,21 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="<?=base_url()?>marketing-dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="<?=base_url()?>kasie-dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
 
                     <li>
-                        <a href="<?=base_url()?>marketing-daftar"><i class="fa fa-table fa-fw"></i> Daftar Pelanggan</a>
+                        <a href="<?=base_url()?>kasie-mingguan"><i class="fa fa-table fa-fw"></i> Laporan Mingguan</a>
                     </li>
-<!--                    <li>-->
-<!--                        <a href="#"><i class="fa fa-edit fa-fw"></i> Input Hasil Presentasi</a>-->
-<!--                    </li>-->
+                    <!--                    <li>-->
+                    <!--                        <a href="#"><i class="fa fa-edit fa-fw"></i> Input Hasil Presentasi</a>-->
+                    <!--                    </li>-->
                     <li>
-                        <a href="<?=base_url()?>marketing-input_penawaran"><i class="fa fa-edit fa-fw"></i> Kirim Penawaran</a>
+                        <a href="<?=base_url()?>kasie-bulanan"><i class="fa fa-edit fa-fw"></i> Laporan Bulanan</a>
                     </li>
-                    <li>
-                        <a href="<?=base_url()?>marketing-daftar_penawaran"><i class="fa fa-table fa-fw"></i> Daftar Penawaran</a>
-                    </li>
+    <!--                    <li>-->
+    <!--                        <a href="--><?//=base_url()?><!--marketing-daftar_penawaran"><i class="fa fa-table fa-fw"></i> Daftar Penawaran</a>-->
+    <!--                    </li>-->
 
                     <li>
                         <a href="<?=base_url()?>Autentikasi/logout_admin"><i class="fa fa-table fa-fw"></i> Logout</a>

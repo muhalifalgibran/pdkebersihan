@@ -34,6 +34,8 @@ class Autentikasi extends CI_Controller{
                     redirect('marketing-dashboard');
                 }elseif ($log->rules == 'penguji'){
                     redirect('penguji-dashboard');
+                }elseif ($log->rules == 'kasie pelsus'){
+                    redirect('kasie-dashboard');
                 }
 
                // redirect('pelanggan/Pelanggan/dashboard');
@@ -71,7 +73,7 @@ class Autentikasi extends CI_Controller{
                     'status' => $log->status);
 
                 $this->session->set_userdata( $array );
-                redirect('pelanggan/Pelanggan/dashboard');
+                redirect('pelanggan-dashboard');
             }else{
                 $this->session->set_flashdata('status','<div class="alert alert-danger" role="alert">
                                               Username dan Password Salah!
@@ -112,7 +114,8 @@ class Autentikasi extends CI_Controller{
 
     public function logout(){
         $this->session->sess_destroy();
-        $this->load->view('login');
+        $this->login();
+        //$this->load->view('login');
     }
 
     public function logout_admin(){

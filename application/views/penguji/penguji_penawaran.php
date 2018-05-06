@@ -19,7 +19,7 @@
                         <label for="exampleFormControlSelect1">Nama Perusahaan</label>
                         <select class="form-control"  name="pelanggan">
                             <?php  foreach($namaPerusahaan as $key) { ?>
-                                <option value="<?php echo $key->idPelanggan?>"><?php echo $key->namaPerusahaan?></option>
+                                <option value="<?php echo $key->idPelanggan?>"><?php echo $key->namaPerusahaan;?></option>
                             <?php  } ?>
                         </select>
                     </div>

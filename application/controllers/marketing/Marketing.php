@@ -15,22 +15,36 @@ class Marketing extends CI_Controller
     }
 
     public function dashboard(){
+        if ($this->session->userdata('statusAdmin') == 'marketing'){
         $total =  $this->M_admin->hitungCalonPelanggan();
         $totalPelanggan =  $this->M_admin->hitungPelanggan();
+        $transaksi = $this->M_admin->hitungJumlahTR();
+        $hitungProposal = $this->M_admin->hitungProposal();
 
+        $data['transaksi'] = $transaksi['tr'];
+        $data['proposal'] = $hitungProposal['pr'];
         $data['calon_pelanggan'] = $total['totalCalon'];
         $data['pelanggan'] = $totalPelanggan['totalPelanggan'];
         $this->load->view('badan/header_admin');
         $this->load->view('admin/dashboard_admin',$data);
+        }else{
+            redirect('pegawai');
+        }
     }
 
     public function daftar(){
-       $data['pelanggan'] = $this->M_admin->getDaftarPelanggan()->result();
-        $this->load->view('badan/header_admin');
-       $this->load->view('admin/daftar',$data);
+        if ($this->session->userdata('statusAdmin') == 'marketing') {
+            $data['pelanggan'] = $this->M_admin->getDaftarPelanggan()->result();
+            $this->load->view('badan/header_admin');
+            $this->load->view('admin/daftar', $data);
+        }
+        else{
+                redirect('pegawai');
+            }
     }
 
     public function update($status){
+        if ($this->session->userdata('statusAdmin') == 'marketing'){
         if ($status =='sukses'){
            $id = $this->uri->segment(5);
 
@@ -40,6 +54,8 @@ class Marketing extends CI_Controller
             $id = $this->uri->segment(5);
             $this->M_admin->updateStatus($id,$status);
             redirect('marketing-daftar');
+        }
+            redirect('pegawai');
         }
 
     }
@@ -53,12 +69,19 @@ class Marketing extends CI_Controller
     }
 
     public function daftarPenawaran(){
-        $data['daftar'] = $this->M_admin->getDaftarPenawaran()->result();
+        if ($this->session->userdata('statusAdmin') == 'marketing'){
+
+            $data['daftar'] = $this->M_admin->getDaftarPenawaran()->result();
         $this->load->view('badan/header_admin');
         $this->load->view('admin/daftarPenawaran',$data);
+        }else{
+            redirect('pegawai');
+        }
     }
 
+
     public function kirimPenawaran(){
+        if ($this->session->userdata('statusAdmin') == 'marketing'){
        $kirim = $this->input->post('sub');
         if (isset($kirim)){
             $idPelanggan = $this->input->post('pelanggan');
@@ -85,13 +108,19 @@ class Marketing extends CI_Controller
                 $keterangan = $this->input->post('keterangan');
 
                 $data = array(
-                    'proposal'    => $this->upload->data('file_name'),
-                    'keterangan'  => $keterangan,
+                    'proposal'             => $this->upload->data('file_name'),
+                    'keterangan'           => $keterangan,
                     'statusPenawaran'      => 'Menunggu',
-                    'idPelanggan' => $idPelanggan
+                    'idPelanggan'          => $idPelanggan,
+                    'idPegawai'            => $this->session->userdata('idAdmin')
 
                 );
-                $this->M_admin->kirimProposal('proposal_penawaran',$data);
+              $in =   $this->M_admin->kirimProposal('proposal_penawaran',$data);
+              if ($in){
+                  redirect('marketing-dashboard');
+              }
+               redirect('marketing-input_penawaran');
+
             }
 
 
@@ -100,6 +129,9 @@ class Marketing extends CI_Controller
             $this->load->view('badan/header_admin');
             $this->load->view('admin/kirim_penawaran',$data);
         }
+                }else{
+            redirect('pegawai');
+            }
     }
 
 

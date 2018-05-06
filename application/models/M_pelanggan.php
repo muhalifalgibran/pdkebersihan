@@ -30,8 +30,16 @@ class M_pelanggan extends CI_Model{
         return $hasil;
     }
 
-    public function getPenawaran($where){
-        return $this->db->get_where('proposal_penawaran',$where);
+    public function getPenawaran($start, $limit, $where){
+        $this->db->where($where);
+        $query = $this->db->get('proposal_penawaran',$start,$limit);
+        return $query;
+    }
+
+    public function total_inbox($where){
+        $this->db->select('count(*) as total');
+        $query = $this->db->get_where('proposal_penawaran',$where);
+        return $query->result()[0];
     }
 
 
