@@ -4,7 +4,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Daftar Calon/pelanggan</h1>
+            <h1 class="page-header">History Penawaran</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -16,7 +16,7 @@
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <table width="100%" class="table table-striped table-bordered table-hover" >
                         <thead>
                         <tr>
                             <th>Id</th>
@@ -31,7 +31,7 @@
                         <?php  foreach ($daftar as $daf){ ?>
                             <tr class="odd gradeX">
 
-                                <td><?php echo $daf->idProposal?></td>
+                                <td><?php echo $daf->idPelanggan?></td>
                                 <td><?php echo $daf->namaPerusahaan ?></td>
                                 <td><?php echo $daf->statusPenawaran ?></td>
                                 <td><?php

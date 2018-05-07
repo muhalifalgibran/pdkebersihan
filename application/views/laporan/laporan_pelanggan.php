@@ -1,8 +1,10 @@
 
+
+
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Daftar Laporan perTriwulan</h1>
+            <h1 class="page-header">Daftar Calon/pelanggan</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -11,47 +13,52 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-
+                    <?php// echo form_open('marketing/Marketing/pencarian') ?>
+<!--                    <div class="input-group custom-search-form">-->
+<!--                        <input type="text" name="cari" class="form-control" placeholder="Search...">-->
+<!--                        <span class="input-group-btn">-->
+<!--                                                        <button class="btn btn-default" type="button">-->
+<!--                                                            <i class="fa fa-search"></i>-->
+<!--                                                        </button>-->
+<!--                                                    </span>-->
+<!--                    </div>-->
+<!--                    </form>-->
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <table width="100%" class="table table-striped table-bordered table-hover" >
+
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="datssaTables-example">
+
                         <thead>
                         <tr>
                             <th>Id</th>
                             <th>Nama Perusahaan</th>
-                            <th>Keterangan</th>
-                            <th>Jenis Layanan</th>
-                            <th>Tgl Operasi</th>
-                            <th>Dana</th>
+<!--                            <th>Proposal</th>-->
+                            <th>Nama Pendaftar</th>
                             <th>Alamat</th>
+                            <th>Logo</th>
+                            <th>Status</th>
+<!--                            <th>Edit</th>-->
 
                         </tr>
                         </thead>
                         <tbody>
-                        <?php  foreach ($minggu as $pel){ ?>
+                        <?php  foreach ($pelanggan as $pel){ ?>
                             <tr class="odd gradeX">
 
-                                <td><?php echo $pel->idTranskasi ?></td>
+                                <td><?php echo $pel->idPelanggan ?></td>
                                 <td><?php echo $pel->namaPerusahaan ?></td>
-                                <td><?php echo $pel->keteranganTransaksi ?></td>
-                                <td class="center"><?php echo $pel->jenisLayanan ?></td>
-                                <td class="center"><?php echo $pel->tglOperasi ?></td>
-                                <td class="center"><?php echo $pel->dana ?></td>
+<!--                                <td><a href="--><?php //echo base_url()?><!--marketing/Marketing/download/--><?php //echo $pel->proposalDana ?><!--"><button type="button" class="btn btn-secondary">Download</button></a></td>-->
+                                <td><?php echo $pel->namaPendaftar ?></td>
                                 <td class="center"><?php echo $pel->alamatPerusahaan ?></td>
+                                <td class="center"><img width="50px" height="50px" src="<?php echo base_url()?>uploads/<?php echo $pel->foto ?> " alt=""></td>
+                                <td class="center"><?php echo $pel->status ?></td>
 
 
                             </tr>
                         <?php  }?>
                         </tbody>
                     </table>
-<!--                    <div class="container" id="con">-->
-<!--                        <button type="button" class="btn btn-outline-secondary"><a href="--><?php //echo base_url('kasiePelsus/KasiePelsus/updateLaporan/setuju/triwulan'.$this->uri->segment(4))?><!--">Setuju</a></button>-->
-<!--                        <button type="button" class="btn btn-dark"><a  href="--><?php //echo base_url('kasiePelsus/KasiePelsus/updateLaporan/tidak/triwulan'.$this->uri->segment(4))?><!--">Tidak Setuju</a></button>-->
-<!--                    </div>-->
-                    <?php echo $tombol?>
-                    <a id="tombol" cls='btn' onClick="hilang();return false">
-                        <i class='icon-print'></i>Cetak </a>
                     <!-- /.table-responsive -->
                     <!--                        <div class="well">-->
                     <!--                            <h4>DataTables Usage Information</h4>-->
@@ -97,14 +104,6 @@
             responsive: true
         });
     });
-
-    function hilang(){
-        var com = document.getElementById('con');
-        var tom = document.getElementById('tombol');
-        com.style.visibility = 'hidden';
-        tom.style.visibility = 'hidden';
-        window.print();
-    }
 </script>
 
 </body>

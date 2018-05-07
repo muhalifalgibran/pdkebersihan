@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>PD Kebersihan Kota Bandung</title>
 
 
     <!-- Bootstrap Core CSS -->
@@ -59,19 +59,11 @@
         </div>
         <!-- /.navbar-header -->
 
-
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li class="sidebar-search">
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
+
                         <!-- /input-group -->
                     </li>
                     <li>
@@ -89,6 +81,9 @@
                     </li>
                     <li>
                         <a href="<?=base_url()?>marketing-daftar_penawaran"><i class="fa fa-table fa-fw"></i> Daftar Penawaran</a>
+                    </li>
+                    <li>
+                        <a href="<?=base_url()?>marketing-daftar_transaksi"><i class="fa fa-table fa-fw"></i> Daftar Pesanan</a>
                     </li>
 
                     <li>

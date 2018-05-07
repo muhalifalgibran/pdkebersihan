@@ -43,8 +43,19 @@ class M_admin extends CI_Model
         $this->db->insert($table,$data);
     }
 
+    public function getLaporanPelanggan(){
+        return $this->db->get_where('pelanggan', array('status' => 'pelanggan'))->result();
+    }
+
     public function getDaftarPelanggan(){
      return $this->db->get('pelanggan');
+    }
+    public function getDaftarPelangganCari($cari){
+        $where = "namaPerusahaan like '%$cari%' or namaPendaftar like '%$cari%' or alamatPerusahaan like '%$cari%'";
+        $this->db->select('*');
+        $this->db->from('pelanggan');
+        $this->db->where($where);
+        return $this->db->get()->result();
     }
     public function getDaftarPenawaranUji($where){
         $this->db->select('*');
@@ -57,11 +68,11 @@ class M_admin extends CI_Model
     }
 
     public function getNamaPerusahaan(){
-        $where = "status = 'pelanggan' AND statusPenawaran = 'Tidak Setuju'";
+        $where = "pel.idPelanggan = tr.idPelanggan";
         $this->db->select("namaPerusahaan, tglOperasi as a, pel.idPelanggan");
         $this->db->from('pelanggan pel');
         $this->db->where($where);
-        $this->db->join('proposal_penawaran as pp', 'pel.idPelanggan = pp.idPelanggan');
+       // $this->db->join('proposal_penawaran as pp', 'pel.idPelanggan = pp.idPelanggan');
         $this->db->join('transaksi as tr', 'pel.idPelanggan = tr.idPelanggan');
         $query = $this->db->get();
         return $query;
@@ -127,6 +138,13 @@ class M_admin extends CI_Model
         $this->db->insert('pegawai',$data);
     }
 
+    public function getDaftarPesanan(){
+        $this->db->select('*');
+        $this->db->from('transaksi as pp');
+        $this->db->join('pelanggan as pel', 'pp.idPelanggan = pel.idPelanggan');
+        return $this->db->get()->result();
+    }
+
     public function updateStatus($id,$role){
       if ($role == 'sukses'){
           $datestring = '%Y-%m-%d';
@@ -150,5 +168,9 @@ class M_admin extends CI_Model
     public function getLaporanMingguan($where){
         $select = 'SELECT * from transaksi join pelanggan using(idPelanggan) where'.$where;
         return $this->db->query($select)->result();
+    }
+    public function updateLaporan($data,$where){
+        $this->db->replace('laporan',$data);
+        //$this->db->where($where);
     }
 }

@@ -24,7 +24,20 @@ class KasiePelsus extends CI_Controller
     {
         if ($this->session->userdata('statusAdmin') == 'kasie pelsus') {
             $this->load->view('badan/header_pelsus');
-             $this->load->view('laporan/laporan_mingguan');
+            $this->load->view('laporan/laporan_mingguan');
+        }else{
+            redirect('pegawai');
+        }
+    }
+
+    public function LaporanPelanggan(){
+        if ($this->session->userdata('statusAdmin') == 'kasie pelsus') {
+
+            $pelanggan['pelanggan'] = $this->M_admin->getLaporanPelanggan();
+           // print_r($pelanggan);
+            $this->load->view('badan/header_pelsus');
+            $this->load->view('laporan/laporan_pelanggan',$pelanggan);
+
         }else{
             redirect('pegawai');
         }
@@ -57,6 +70,7 @@ class KasiePelsus extends CI_Controller
     public function laporanBulanan()
     {
         if ($this->session->userdata('statusAdmin') == 'kasie pelsus') {
+
             $this->load->view('badan/header_pelsus');
             $this->load->view('laporan/laporan_triwulan');
         }else{
@@ -64,8 +78,7 @@ class KasiePelsus extends CI_Controller
         }
     }
 
-    public function bulanan($triwulan)
-    {
+    public function bulanan($triwulan){
         if ($this->session->userdata('statusAdmin') == 'kasie pelsus') {
             $where = ' ';
             if ($triwulan == 1){
@@ -79,12 +92,44 @@ class KasiePelsus extends CI_Controller
             }else{
                 redirect('kasie-bulanan');
             }
+            $log['tombol'] = '<div class="container" id="con">                      
+                         <button type="button" class="btn btn-outline-secondary"><a href='.base_url("kasiePelsus/KasiePelsus/updateLaporan/setuju/triwulan".$this->uri->segment(4)).'>Setuju</a></button>
+                       <button type="button" class="btn btn-dark"><a href='.base_url("kasiePelsus/KasiePelsus/updateLaporan/tidak/triwulan".$this->uri->segment(4)).'>Tidak Setuju</a></button>
+                    </div>';
 
             $log['minggu'] = $this->M_admin->getLaporanMingguan($where);
             $this->load->view('badan/header_pelsus');
-            $this->load->view('laporan/daftar_laporan_mingguan',$log);
+            $this->load->view('laporan/daftar_laporan_triwulan',$log);
         }else{
             redirect('pegawai');
+        }
+    }
+
+    public function updateLaporan($status,$triw){
+        if ($status == 'setuju'){
+            $data = array('jenisLaporan' => $triw,
+                          'statusLaporan' => 'setuju',
+                          'idPegawai' => $this->session->userdata('idAdmin'));
+            $where = array('jenisLaporan' => $triw);
+            $this->M_admin->updateLaporan($data,$where);
+            $this->session->set_flashdata('update','<div class="alert alert-danger" style="width: 100%" role="alert">
+                                              berhasil disetujui
+                                            </div>');
+           // echo $this->session->flashdata('update');
+            redirect('kasie-bulanan');
+        }elseif ($status == 'tidak'){
+            $data = array('jenisLaporan' => $triw,
+                'statusLaporan' => 'tidak setuju',
+                'idPegawai' => $this->session->userdata('idAdmin'));
+            $where = array('jenisLaporan' => $triw);
+            $this->M_admin->updateLaporan($data,$where);
+            $this->session->set_flashdata('update','<div class="alert alert-danger" style="width: 100%" role="alert">
+                                              tidak disetujui
+                                            </div>');
+
+            redirect('kasie-bulanan');
+        }else{
+            redirect('kasie-bulanan');
         }
     }
 

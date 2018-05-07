@@ -36,6 +36,10 @@ class Autentikasi extends CI_Controller{
                     redirect('penguji-dashboard');
                 }elseif ($log->rules == 'kasie pelsus'){
                     redirect('kasie-dashboard');
+                }elseif ($log->rules == 'bidang keuangan'){
+                    redirect('keuangan-dashboard');
+                }elseif ($log->rules == 'kabid pelsus'){
+                    redirect('kabid-dashboard');
                 }
 
                // redirect('pelanggan/Pelanggan/dashboard');

@@ -4,7 +4,9 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Laporan Mingguan</h1>
+            <h1 class="page-header">Laporan per-Triwulan</h1>
+            <a href="#" class="pull-right forgot"><?php echo $this->session->flashdata('update');?></a>
+
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -16,6 +18,7 @@
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
+
 
                     <?php //echo form_open('kasie-dashboard') ?>
                     <button type="submit" class="btn btn-secondary"><a href="<?php echo base_url() ?>kasiePelsus/KasiePelsus/bulanan/1">Triwulan 1</a></button>

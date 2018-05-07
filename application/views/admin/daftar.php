@@ -13,11 +13,22 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-
+                        <?php echo form_open('marketing/Marketing/pencarian') ?>
+                        <div class="input-group custom-search-form">
+                            <input type="text" name="cari" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="button">
+                                                            <i class="fa fa-search"></i>
+                                                        </button>
+                                                    </span>
+                        </div>
+                        </form>
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+
+                        <table width="100%" class="table table-striped table-bordered table-hover" id="datssaTables-example">
+
                             <thead>
                             <tr>
                                 <th>Id</th>

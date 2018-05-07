@@ -1,8 +1,7 @@
-
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Daftar Laporan perTriwulan</h1>
+            <h1 class="page-header">Daftar Pesanan</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -11,7 +10,6 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -20,38 +18,29 @@
                         <tr>
                             <th>Id</th>
                             <th>Nama Perusahaan</th>
-                            <th>Keterangan</th>
-                            <th>Jenis Layanan</th>
-                            <th>Tgl Operasi</th>
+                            <th>Status Penawaran</th>
+                            <th>Tanggal Operasi</th>
                             <th>Dana</th>
-                            <th>Alamat</th>
 
                         </tr>
                         </thead>
                         <tbody>
-                        <?php  foreach ($minggu as $pel){ ?>
+                        <?php  foreach ($daftar as $daf){ ?>
                             <tr class="odd gradeX">
 
-                                <td><?php echo $pel->idTranskasi ?></td>
-                                <td><?php echo $pel->namaPerusahaan ?></td>
-                                <td><?php echo $pel->keteranganTransaksi ?></td>
-                                <td class="center"><?php echo $pel->jenisLayanan ?></td>
-                                <td class="center"><?php echo $pel->tglOperasi ?></td>
-                                <td class="center"><?php echo $pel->dana ?></td>
-                                <td class="center"><?php echo $pel->alamatPerusahaan ?></td>
-
-
+                                <td><?php echo $daf->idTranskasi?></td>
+                                <td><?php echo $daf->namaPerusahaan ?></td>
+                                <td><?php echo $daf->keteranganTransaksi ?></td>
+                                <td><?php
+                                    $format = 'd-M-Y';
+                                    // echo $daf->tglOperasi;
+                                    $date = nice_date($daf->tglOperasi,$format);
+                                    echo $date ?></td>
+                                <td><?php echo $daf->dana ?></td>
                             </tr>
                         <?php  }?>
                         </tbody>
                     </table>
-<!--                    <div class="container" id="con">-->
-<!--                        <button type="button" class="btn btn-outline-secondary"><a href="--><?php //echo base_url('kasiePelsus/KasiePelsus/updateLaporan/setuju/triwulan'.$this->uri->segment(4))?><!--">Setuju</a></button>-->
-<!--                        <button type="button" class="btn btn-dark"><a  href="--><?php //echo base_url('kasiePelsus/KasiePelsus/updateLaporan/tidak/triwulan'.$this->uri->segment(4))?><!--">Tidak Setuju</a></button>-->
-<!--                    </div>-->
-                    <?php echo $tombol?>
-                    <a id="tombol" cls='btn' onClick="hilang();return false">
-                        <i class='icon-print'></i>Cetak </a>
                     <!-- /.table-responsive -->
                     <!--                        <div class="well">-->
                     <!--                            <h4>DataTables Usage Information</h4>-->
@@ -97,14 +86,6 @@
             responsive: true
         });
     });
-
-    function hilang(){
-        var com = document.getElementById('con');
-        var tom = document.getElementById('tombol');
-        com.style.visibility = 'hidden';
-        tom.style.visibility = 'hidden';
-        window.print();
-    }
 </script>
 
 </body>

@@ -71,9 +71,20 @@ class Marketing extends CI_Controller
     public function daftarPenawaran(){
         if ($this->session->userdata('statusAdmin') == 'marketing'){
 
-            $data['daftar'] = $this->M_admin->getDaftarPenawaran()->result();
+        $data['daftar'] = $this->M_admin->getDaftarPenawaran()->result();
         $this->load->view('badan/header_admin');
         $this->load->view('admin/daftarPenawaran',$data);
+        }else{
+            redirect('pegawai');
+        }
+    }
+
+    public function daftarPesanan(){
+        if ($this->session->userdata('statusAdmin') == 'marketing'){
+
+            $data['daftar'] = $this->M_admin->getDaftarPesanan();
+            $this->load->view('badan/header_admin');
+            $this->load->view('admin/daftarTransaksi',$data);
         }else{
             redirect('pegawai');
         }
@@ -132,6 +143,20 @@ class Marketing extends CI_Controller
                 }else{
             redirect('pegawai');
             }
+    }
+
+    public function pencarian(){
+
+        if ($this->session->userdata('statusAdmin') == 'marketing') {
+            $cari = $this->input->post('cari');
+            $data['pelanggan'] = $this->M_admin->getDaftarPelangganCari($cari);
+            $this->load->view('badan/header_admin');
+            $this->load->view('admin/daftar', $data);
+        }
+        else{
+            redirect('pegawai');
+        }
+
     }
 
 

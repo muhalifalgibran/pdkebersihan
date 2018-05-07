@@ -2,7 +2,7 @@
         <div class="atas-dikit">
         <div class="card">
             <h1 class="tengah">Data Perusahaan</h1>
-            <div class="col-lg-5">
+            <div class="">
             <div class="row">
                 <div class="col-lg-8 formulir">
 

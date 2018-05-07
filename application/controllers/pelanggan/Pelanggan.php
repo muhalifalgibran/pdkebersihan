@@ -76,12 +76,13 @@
                 );
 
                //echo $inimi;
-                 $email1 = 'aaaa,vvv,cccc';
+                // $email1 = 'aaaa,vvv,cccc';
                // echo strlen($inimi);
-                 echo $dana;
+                 //echo $dana;
 
               $this->M_transaksi->setTransaksi($data);
 
+              redirect('pelanggan-dashboard');
 
              }else{
                  $this->load->view('badan/header_pelanggan');
